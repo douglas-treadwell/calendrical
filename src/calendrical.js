@@ -1,21 +1,3 @@
-/*
-
-Calendrical is intended to make building calendar interfaces easier.
-
-Example usage:
-
-var weeks = calendrical.getWeeksInMonth();
-
-Now weeks is an array of weeks, which each are an array of day objects.
-
-The day objects contain a dayOfMonth number (1 to 31) and one of three boolean flags set to true:
-inCurrentMonth, trailingDay, or leadingDay.
-
-This should make it easy to build a calendar interface by looping over the weeks, then looping over
-the days, and styling each day based on whether it is in the current month, previous month, or next month.
-
-*/
-
 (function() {
 	'use strict';
 
