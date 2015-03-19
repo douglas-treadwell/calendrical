@@ -17,6 +17,8 @@ the days, and styling each day based on whether it is in the current month, prev
 */
 
 (function() {
+	'use strict';
+
 	var calendrical = { };
 
 	var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -111,7 +113,8 @@ the days, and styling each day based on whether it is in the current month, prev
 		for ( var i = 1; i <= daysInCurrentMonth; ++i ) {
 			currentWeek.push({
 				dayOfMonth: i,
-				inCurrentMonth: true
+				inCurrentMonth: true,
+                date: new Date(dateInMonth.getFullYear(), dateInMonth.getMonth(), i)
 			});
 
 			if ( currentWeek.length === 7 ) {
