@@ -2,6 +2,8 @@
 
 Calendrical is intended to make building calendar interfaces easier.
 
+There are many existing calendar plugins, including Datepicker for jQuery UI, FullCalendar, and AngularUI Calendar.  However, it's inconvenient that these calendar plugins tie together the date calculations that make the calendar possible and the visualization of the calendar.  Calendrical is intended to provide the date calculations that will enable users to easily produce their own calendar visualizations.
+
 ## Basic usage
 
 Only one method is intended for use: getWeeksInMonth.
