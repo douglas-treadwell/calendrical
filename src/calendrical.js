@@ -37,7 +37,7 @@
 				leadingDays.push({
 					dayOfMonth: i,
 					leadingDay: true,
-                    date: new Date(lastDayInPreviousMonth.getFullYear(), lastDayInPreviousMonth.getMonth(), i)
+					date: new Date(lastDayInPreviousMonth.getFullYear(), lastDayInPreviousMonth.getMonth(), i)
 				});
 			}
 		}
@@ -63,8 +63,8 @@
 				trailingDays.push({
 					dayOfMonth: i,
 					trailingDay: true, // for the date below, JS avoids the 13th month (12 base 0) problem by adjusting the year
-                    date: new Date(lastDayInMonth.getFullYear(), lastDayInMonth.getMonth() + 1, i)
-                });
+					date: new Date(lastDayInMonth.getFullYear(), lastDayInMonth.getMonth() + 1, i)
+				});
 			}
 		}
 
@@ -92,7 +92,7 @@
 			currentWeek.push({
 				dayOfMonth: i,
 				inCurrentMonth: true,
-                date: new Date(dateInMonth.getFullYear(), dateInMonth.getMonth(), i)
+				date: new Date(dateInMonth.getFullYear(), dateInMonth.getMonth(), i)
 			});
 
 			if ( currentWeek.length === 7 ) {
