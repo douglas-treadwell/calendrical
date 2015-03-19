@@ -3,8 +3,6 @@
 
 	var calendrical = { };
 
-	var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 	function getBeginningOfMonth(dateInMonth) {
 		return new Date(dateInMonth.getFullYear(), dateInMonth.getMonth());
 	}
