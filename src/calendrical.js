@@ -8,15 +8,13 @@
 	}
 
 	function getLastDayInMonth(dateInMonth) {
-		return getLastDayInPreviousMonth(new Date(dateInMonth.getFullYear(), dateInMonth.getMonth() + 1));
+		// day-of-month is 1-indexed so 0 moves the date back to the last day of the previous month
+		return new Date(dateInMonth.getFullYear(), dateInMonth.getMonth() + 1, 0);
 	}
 
 	function getLastDayInPreviousMonth(dateInMonth) {
-		var date = new Date(dateInMonth.getFullYear(), dateInMonth.getMonth()); // gets a date at the start of the current month
-
-		date.setDate(0); // Date.setDate(0) moves the date back to the last day of the previous month, modifies the date it is applied to, returns nothing
-
-		return date;
+		// day-of-month is 1-indexed so 0 moves the date back to the last day of the previous month
+		return new Date(dateInMonth.getFullYear(), dateInMonth.getMonth(), 0); 
 	}
 
 	function getLeadingDays(dateInMonth, weekStartsWith, simple) {
