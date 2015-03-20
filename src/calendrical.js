@@ -3,18 +3,56 @@
 
 	var calendrical = { };
 
+	var isUtcMode = false;
+
+	function dateFactory() {
+		if ( isUtcMode ) {
+			return new Date(Date.UTC.apply(Date.UTC, arguments));
+		}
+
+		var numArgs = arguments.length;
+
+		// in order of likely number of arguments
+
+		if ( numArgs === 2 ) {
+			return new Date(arguments[0], arguments[1]);
+		} else if ( numArgs === 3 ) {
+			return new Date(arguments[0], arguments[1], arguments[2]);			
+		} else if ( numArgs === 1 ) {
+			return new Date(arguments[0]);			
+		} else if ( numArgs === 0 ) {			
+			return new Date();			
+		} else if ( numArgs === 4 ) {
+			return new Date(arguments[0], arguments[1], arguments[2], arguments[3]);
+		} else if ( numArgs === 5 ) {
+			return new Date(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4]);
+		} else if ( numArgs === 6 ) {
+			return new Date(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
+		} else if ( numArgs >= 7 ) {
+			return new Date(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6]);
+		}
+
+		// unfortunately this solution requires EcmaScript 5 which is not universally available
+		// the first Date argument applies to the Date.bind call, and the second in [ ] is applied to the constructor
+		// return new (Date.bind.apply(Date, [Date].concat(arguments)));
+	};
+
+	function setUtcMode(utcMode) {
+		isUtcMode = utcMode;
+	}
+
 	function getBeginningOfMonth(dateInMonth) {
-		return new Date(dateInMonth.getFullYear(), dateInMonth.getMonth());
+		return dateFactory(dateInMonth.getFullYear(), dateInMonth.getMonth());
 	}
 
 	function getLastDayInMonth(dateInMonth) {
 		// day-of-month is 1-indexed so 0 moves the date back to the last day of the previous month
-		return new Date(dateInMonth.getFullYear(), dateInMonth.getMonth() + 1, 0);
+		return dateFactory(dateInMonth.getFullYear(), dateInMonth.getMonth() + 1, 0);
 	}
 
 	function getLastDayInPreviousMonth(dateInMonth) {
 		// day-of-month is 1-indexed so 0 moves the date back to the last day of the previous month
-		return new Date(dateInMonth.getFullYear(), dateInMonth.getMonth(), 0); 
+		return dateFactory(dateInMonth.getFullYear(), dateInMonth.getMonth(), 0); 
 	}
 
 	function getLeadingDays(dateInMonth, weekStartsWith, simple) {
@@ -37,7 +75,7 @@
 				leadingDays.push({
 					dayOfMonth: i,
 					leadingDay: true,
-					date: new Date(lastDayInPreviousMonth.getFullYear(), lastDayInPreviousMonth.getMonth(), i)
+					date: dateFactory(lastDayInPreviousMonth.getFullYear(), lastDayInPreviousMonth.getMonth(), i)
 				});
 			}
 		}
@@ -63,7 +101,7 @@
 				trailingDays.push({
 					dayOfMonth: i,
 					trailingDay: true, // for the date below, JS avoids the 13th month (12 base 0) problem by adjusting the year
-					date: new Date(lastDayInMonth.getFullYear(), lastDayInMonth.getMonth() + 1, i)
+					date: dateFactory(lastDayInMonth.getFullYear(), lastDayInMonth.getMonth() + 1, i)
 				});
 			}
 		}
@@ -92,7 +130,7 @@
 			currentWeek.push({
 				dayOfMonth: i,
 				inCurrentMonth: true,
-				date: new Date(dateInMonth.getFullYear(), dateInMonth.getMonth(), i)
+				date: dateFactory(dateInMonth.getFullYear(), dateInMonth.getMonth(), i)
 			});
 
 			if ( currentWeek.length === 7 ) {
@@ -116,6 +154,7 @@
 
 	calendrical = {
 		getWeeksInMonth: getWeeksInMonth,
+		setUtcMode: setUtcMode,
 		utility: {
 			getLeadingDays: getLeadingDays,
 			getTrailingDays: getTrailingDays,

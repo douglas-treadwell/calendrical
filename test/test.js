@@ -60,4 +60,16 @@ describe('calendrical', function() {
             ]);
         });
 	});
+
+	describe('useUtcMode', function() {
+		it('when true should cause dates to be relative to UTC', function() {			
+			expect(calendrical.utility.getLastDayInMonth(new Date(2014, 10))).toEqual(new Date(2014, 10, 30));
+
+			calendrical.setUtcMode(true);
+			expect(calendrical.utility.getLastDayInMonth(new Date(2014, 10))).toEqual(new Date(Date.UTC(2014, 10, 30)));
+
+			calendrical.setUtcMode(false); // reset
+		});
+	});
+
 });

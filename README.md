@@ -6,7 +6,9 @@ There are many existing calendar plugins, including Datepicker for jQuery UI, Fu
 
 ## Basic usage
 
-Only one method is intended for use: getWeeksInMonth.
+The _setUtcMode_ method can be used to select whether dates are returned relative to the local time zone or to UTC.
+
+Only one other method is intended for use: getWeeksInMonth.
 
 getWeeksInMonth(any _Date_ in the month, [_options_])
 
@@ -17,9 +19,9 @@ Where _options_ is an object which may have the following properties:
 var weeks = calendrical.getWeeksInMonth();
 ```
 
-Now weeks is an array of weeks, which each are an array of day objects.
+Now weeks is an array of weeks, which each are an array of *day* objects.
 
-The day objects contain a dayOfMonth number (1 to 31) and one of three boolean flags set to true:
+The day objects contain a dayOfMonth number (1 to 31), a date (a JavaScript Date) for the day, and one of three boolean flags set to true:
 inCurrentMonth, trailingDay, or leadingDay.
 
 This should make it easy to build a calendar interface by looping over the weeks, then looping over
