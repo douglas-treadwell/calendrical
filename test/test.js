@@ -72,4 +72,18 @@ describe('calendrical', function() {
 		});
 	});
 
+	describe('dateFactory', function() {
+		it('should create a correct Date object when passed an array (year, month, day, ...) of 2 to arguments (the first 7 being valid)', function() {
+			expect(calendrical.utility.dateFactory(2014)).toEqual(new Date(2014));
+			expect(calendrical.utility.dateFactory(2014, 1)).toEqual(new Date(2014, 1));
+			expect(calendrical.utility.dateFactory(2014, 1, 2)).toEqual(new Date(2014, 1, 2));
+			expect(calendrical.utility.dateFactory(2014, 1, 2, 3)).toEqual(new Date(2014, 1, 2, 3));
+			expect(calendrical.utility.dateFactory(2014, 1, 2, 3, 4)).toEqual(new Date(2014, 1, 2, 3, 4));
+			expect(calendrical.utility.dateFactory(2014, 1, 2, 3, 4, 5)).toEqual(new Date(2014, 1, 2, 3, 4, 5));
+			expect(calendrical.utility.dateFactory(2014, 1, 2, 3, 4, 5, 6)).toEqual(new Date(2014, 1, 2, 3, 4, 5, 6));
+			expect(calendrical.utility.dateFactory(2014, 1, 2, 3, 4, 5, 6, 7)).toEqual(new Date(2014, 1, 2, 3, 4, 5, 6, 7));
+			expect(calendrical.utility.dateFactory(2014, 1, 2, 3, 4, 5, 6, 7, 8)).toEqual(new Date(2014, 1, 2, 3, 4, 5, 6, 7, 8));
+		});
+	});
+
 });

@@ -17,11 +17,11 @@
 		if ( numArgs === 2 ) {
 			return new Date(arguments[0], arguments[1]);
 		} else if ( numArgs === 3 ) {
-			return new Date(arguments[0], arguments[1], arguments[2]);			
+			return new Date(arguments[0], arguments[1], arguments[2]);
 		} else if ( numArgs === 1 ) {
-			return new Date(arguments[0]);			
-		} else if ( numArgs === 0 ) {			
-			return new Date();			
+			return new Date(arguments[0]);
+		} else if ( numArgs === 0 ) {
+			return new Date();
 		} else if ( numArgs === 4 ) {
 			return new Date(arguments[0], arguments[1], arguments[2], arguments[3]);
 		} else if ( numArgs === 5 ) {
@@ -158,7 +158,8 @@
 		utility: {
 			getLeadingDays: getLeadingDays,
 			getTrailingDays: getTrailingDays,
-			getLastDayInMonth: getLastDayInMonth
+			getLastDayInMonth: getLastDayInMonth,
+			dateFactory: dateFactory
 		}
 	};
 

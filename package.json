@@ -1,6 +1,6 @@
 {
   "name": "calendrical",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convenient date tools for building calendars.",
   "main": "src/calendrical.js",
   "directories": {
